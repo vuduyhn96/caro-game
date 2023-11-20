@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Caro Game</title>
+</head>
+<body>
+<h3>Caro Game Simple</h3>
+<p id="carogame"></p>
+<input type="button" value="Change Value" onclick="changeValue()">
+
+<script>
+    let b = document.getElementById("carogame");
+    let board = [];
+    let data = "";
+
+    for (let i = 0; i < 5; i++) {
+        board[i] = new Array(0, 0, 0, 0, 0);
+    }
+
+    function renderBoard() {
+        data = "";
+        for (let i = 0; i < 5; i++) {
+            data += "<br/>";
+            for (let j = 0; j < 5; j++) {
+                data += board[i][j] + "&nbsp;&nbsp;";
+            }
+        }
+        b.innerHTML = data;
+    }
+    function changeValue() {
+        let clickx = prompt("x: ");
+        let clicky = prompt("y: ");
+
+        if (clickx >= 0 && clickx < 5 && clicky >= 0 && clicky < 5) {
+            board[clickx][clicky] = "x";
+            renderBoard();
+        } else {
+            alert("Invalid coordinates. Please enter valid coordinates.");
+        }
+    }
+
+    // Initial render
+    renderBoard();
+</script>
+</body>
+</html>
